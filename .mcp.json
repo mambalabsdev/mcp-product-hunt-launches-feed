@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mamba-product-hunt-launches-feed": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mambalabsdev/mcp-product-hunt-launches-feed"
+      ],
+      "env": {
+        "APIFY_TOKEN": "your-apify-token"
+      }
+    }
+  }
+}

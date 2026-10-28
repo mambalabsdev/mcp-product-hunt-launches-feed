@@ -1,0 +1,30 @@
+{
+  "name": "mcp-product-hunt-launches-feed",
+  "displayName": "Product Hunt Launches Feed",
+  "version": "1.0.0",
+  "description": "MCP server for Product Hunt Launches Feed. Daily Product Hunt launches with maker names, website, company domain, X and LinkedIn, votes, and topics. Runs on Apify. Clay-ready output.",
+  "author": {
+    "name": "Mamba Labs",
+    "email": "labs@mambamindsetgrowth.com"
+  },
+  "homepage": "https://mambabuilt.com",
+  "repository": "https://github.com/mambalabsdev/mcp-product-hunt-launches-feed",
+  "license": "MIT",
+  "category": "productivity",
+  "tags": [
+    "product-hunt",
+    "launches",
+    "startups",
+    "makers",
+    "lead-generation"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "product-hunt",
+    "launches",
+    "startups",
+    "makers"
+  ],
+  "mcpServers": ".mcp.json"
+}

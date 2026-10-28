@@ -1,0 +1,50 @@
+{
+  "name": "@mambalabsdev/mcp-product-hunt-launches-feed",
+  "version": "1.0.0",
+  "description": "MCP server for Product Hunt Launches Feed. Daily Product Hunt launches with maker names, website, company domain, X and LinkedIn, votes, and topics. Runs on Apify. Clay-ready output.",
+  "type": "module",
+  "bin": {
+    "mcp-product-hunt-launches-feed": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "test": "npm run build && node --test test/*.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "product-hunt",
+    "launches",
+    "startups",
+    "makers",
+    "lead-generation",
+    "apify",
+    "clay"
+  ],
+  "author": "Mamba Labs <labs@mambamindsetgrowth.com>",
+  "license": "MIT",
+  "homepage": "https://apify.com/mambalabs/product-hunt-launches-feed",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mambalabsdev/mcp-product-hunt-launches-feed"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "5.9.3"
+  },
+  "mcpName": "com.mambabuilt/mcp-product-hunt-launches-feed"
+}
