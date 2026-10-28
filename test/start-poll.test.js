@@ -74,3 +74,8 @@ test("a run that does not succeed is an error naming the run", async () => {
   assert.match(result.content[0].text, /run1/);
   assert.match(result.content[0].text, /FAILED/);
 });
+
+test("numbers and yes or no values are sent to the actor as text", () => {
+  const built = readFileSync(join(repo, "build", "index.js"), "utf8");
+  assert.match(built, /typeof v === "number" \|\| typeof v === "boolean" \? String\(v\) : v/);
+});

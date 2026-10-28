@@ -19,11 +19,14 @@ type ToolResult = {
   content: Array<{ type: "text"; text: string }>;
 };
 
-// Drop undefined values so optional inputs are not sent to the actor.
+// Drop undefined values so optional inputs are not sent to the actor. Numbers
+// and yes or no values go as text: the actor types them string, the way Clay
+// sends every input, and Apify checks that type before the run starts.
 function compact(obj: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(obj)) {
-    if (v !== undefined) out[k] = v;
+    if (v === undefined) continue;
+    out[k] = typeof v === "number" || typeof v === "boolean" ? String(v) : v;
   }
   return out;
 }
@@ -209,13 +212,13 @@ server.registerTool(
       openWorldHint: true,
     },
     inputSchema: {
-      days_back: z.number().int().min(1).max(31)
+      days_back: z.union([z.number().int().min(1).max(31), z.string()])
         .optional()
         .describe("The last N full days, in Product Hunt's day (Pacific time). 1 is yesterday. Default 1. Ignored when dates is set."),
       dates: z.array(z.string())
         .optional()
         .describe("Specific launch days as YYYY-MM-DD, up to 31."),
-      include_today: z.boolean()
+      include_today: z.union([z.boolean(), z.string()])
         .optional()
         .describe("Also read today's list, which is still filling. Default false."),
       topics: z.array(z.string())
@@ -224,16 +227,16 @@ server.registerTool(
       keywords: z.array(z.string())
         .optional()
         .describe("Words to find in the launch name, tagline, or topics."),
-      min_votes: z.number().int().min(0)
+      min_votes: z.union([z.number().int().min(0), z.string()])
         .optional()
         .describe("Keep launches with at least this many votes. Default 0."),
-      max_launches: z.number().int().min(1).max(2000)
+      max_launches: z.union([z.number().int().min(1).max(2000), z.string()])
         .optional()
         .describe("Launch rows per run. Default 100."),
-      open_product_pages: z.boolean()
+      open_product_pages: z.union([z.boolean(), z.string()])
         .optional()
         .describe("Read each product page for website, domain, makers, and socials. Default true."),
-      only_new: z.boolean()
+      only_new: z.union([z.boolean(), z.string()])
         .optional()
         .describe("Skip launches an earlier run with the same state_key returned (free). Default false."),
       state_key: z.string()
@@ -242,7 +245,7 @@ server.registerTool(
       product_hunt_token: z.string()
         .optional()
         .describe("Optional. Your own Product Hunt developer token, for the official API route. Never stored or logged."),
-      include_unfeatured: z.boolean()
+      include_unfeatured: z.union([z.boolean(), z.string()])
         .optional()
         .describe("Needs product_hunt_token. Also return unfeatured launches. Default false."),
       max_charge_usd: z.string()
