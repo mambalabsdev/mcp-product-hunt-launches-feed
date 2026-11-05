@@ -1,6 +1,6 @@
 # Product Hunt Launches Feed MCP Server
 
-An MCP server for the Mamba Labs Product Hunt Launches Feed actor on Apify. Pick the days, and get one row per Product Hunt launch with the maker names, the product's website and company domain, its X and LinkedIn links, votes, rank, and topics.
+An MCP server for the Mamba Labs [Product Hunt Daily Launches with Maker Domains](https://apify.com/mambalabs/product-hunt-launches-feed) actor on Apify. Pick the days, and get one row per Product Hunt launch with the maker names, the product's website and company domain, its X and LinkedIn links, votes, rank, and topics.
 
 ## What's Inside
 
